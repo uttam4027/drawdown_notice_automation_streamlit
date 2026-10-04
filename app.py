@@ -295,6 +295,17 @@ def build_zip(_stamp):
     return buf.getvalue()
 
 
+@st.cache_data(show_spinner="Zipping output folder...")
+def build_full_zip(_stamp):
+    """Zip the whole output folder (excel, pdf, emails, reports) keeping the sub-folder structure."""
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+        for f in sorted(config.OUT_DIR.rglob("*")):
+            if f.is_file():
+                z.write(f, Path("output") / f.relative_to(config.OUT_DIR))
+    return buf.getvalue()
+
+
 # ============================================================================ running the existing automation
 def run_automation(strip_ph=None):
     """Call the existing pipeline (main.main) with a progress bar. Returns True when it ran.
@@ -528,9 +539,12 @@ def page_process():
         st.dataframe(err, hide_index=True, width="stretch")
     qa_file = reporting.QA_REPORT()
     st.write("")
-    d1, d2, _ = st.columns([1.2, 1.3, 2])
+    d1, d2, d3 = st.columns([1.2, 1.3, 1.6])
     d1.download_button("QA report (.xlsx)", qa_file.read_bytes(), qa_file.name)
     d2.download_button("PDFs + emails (.zip)", build_zip(stamp()), "drawdown_outputs.zip")
+    d3.download_button("Full output folder (.zip)", build_full_zip(stamp()),
+                       f"drawdown_output_folder_{time.strftime('%Y%m%d_%H%M%S')}.zip",
+                       "application/zip", type="primary")
 
 
 # ============================================================================ 3. INVESTOR NOTICES
