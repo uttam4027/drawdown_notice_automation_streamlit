@@ -1,0 +1,30 @@
+Total investors: 58
+Processed: 58
+Successful: 58
+Failed: 0
+PDFs: 58
+Dummy emails: 58
+Excel notices: 58
+Templates processed: 10/10
+QA failures: 0
+Errors (exceptions): 0
+Investors with blank name in Working: 58
+Investors with blank email in Working: 58
+PDFs with QA warnings: 0
+Batch verification: PASS
+Run time (s): 37.6
+Pages - Format - 2nd close NR inves: 2 (expected 2)
+Pages - Format - 2nd close R investors: 2 (expected 2)
+Pages - Format - 3rd close NR inves: 2 (expected 2)
+Pages - Format - 3rd close R invest: 2 (expected 2)
+Pages - Format - Final close Employee: 2 (expected 2)
+Pages - Format - Institutional Inv: 2 (expected 2)
+Pages - Format - LDC's: 2 (expected 2)
+Pages - Format - NRIs: 2 (expected 2)
+Pages - Format - R Inv (Empl & Sponsor): 2 (expected 2)
+Pages - Format - Resident investors: 2 (expected 2)
+
+Known warnings (data not in workbook):
+- Bank details (bank, account no., IFSC, SWIFT, correspondent bank) are blank in every template - not invented.
+- Investor name/address/email are blank in Working - dummy labelled values used in DEMO_MODE.
+- Template due date is 30 June 2026 but the wording says 15 Business Days from 11 June 2026 (= 2 July 2026).

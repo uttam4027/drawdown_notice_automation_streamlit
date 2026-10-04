@@ -1,0 +1,9 @@
+openpyxl>=3.1
+pandas>=2.0
+pymupdf>=1.23
+streamlit>=1.40
+plotly>=5.20
+reportlab>=4.0
+# LibreOffice is OPTIONAL now: without it the built-in ReportLab renderer makes the PDFs (PDF_ENGINE=auto).
+# Optional - only needed if send_email_outlook() is explicitly enabled (Windows + Outlook)
+# pywin32
